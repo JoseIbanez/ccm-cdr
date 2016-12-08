@@ -10,7 +10,9 @@ python:
   - "3.6-dev" # 3.6 development branch
   - "nightly" # currently points to 3.7-dev
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install:
+  - "pip install -r requirements.txt"
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.6.* ]]; then travis_retry pip install unittest2; fi
 before_script:
   - echo 'Etc/UTC' | sudo tee /etc/timezone
   - sudo dpkg-reconfigure --frontend noninteractive tzdata
