@@ -10,6 +10,8 @@ python:
 #  - "3.6-dev" # 3.6 development branch
 #  - "nightly" # currently points to 3.7-dev
 # command to install dependencies
+notifications:
+  slack: testing1space:2tWja8wIgKBE292cEX8dw7zL
 install:
   - "pip install -r requirements.txt"
   - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then travis_retry pip install unittest2; fi
