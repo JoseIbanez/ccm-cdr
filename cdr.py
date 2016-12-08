@@ -14,6 +14,11 @@ import csv;
 import datetime;
 import time;
 
+#Python3.x compatibility
+if sys.version_info > (3,):
+    long = int
+
+
 def time_to_string(time_value):
     """convert Unix epoch time to a human readable string"""
     if not (time_value.isdigit()):

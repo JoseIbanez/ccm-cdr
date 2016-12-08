@@ -19,5 +19,7 @@ before_script:
   - cat /etc/timezone
 # command to run tests
 script:
-  - python ./test_demo.py -v
-  - python -m unittest discover -v
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then python ./test_demo.py -v; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then python ./test_demo2.py -v; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then python -m unittest discover -v; fi  
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.* ]]; then python -m unittest discover -v; fi
