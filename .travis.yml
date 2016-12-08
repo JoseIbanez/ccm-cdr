@@ -12,8 +12,7 @@ python:
 # command to install dependencies
 install: "pip install -r requirements.txt"
 before_script:
-  - cat /etc/timezone
-  - echo 'GMT' | sudo tee /etc/timezone
+  - echo 'Etc/UTC' | sudo tee /etc/timezone
   - sudo dpkg-reconfigure --frontend noninteractive tzdata
   - cat /etc/timezone
 # command to run tests

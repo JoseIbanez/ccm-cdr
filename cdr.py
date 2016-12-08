@@ -73,7 +73,7 @@ def main():
 
 
 
-      print ','.join([row[4],row[7],row[13],row[28],row[35],row[8],row[29],row[11],row[33],row[55],row[65],row[2],row[56],row[57]])
+      print(','.join([row[4],row[7],row[13],row[28],row[35],row[8],row[29],row[11],row[33],row[55],row[65],row[2],row[56],row[57]]))
 
 
 if __name__ == '__main__':
