@@ -8,7 +8,7 @@ class TestCdrMethods(unittest.TestCase):
         self.assertEqual('foo'.upper(), 'FOO')
 
     def test_time_to_string(self):
-        self.assertEqual(cdr.time_to_string("1447409455"), '2015-11-13 11:10:55')
+        self.assertEqual(cdr.time_to_string("1447409455"), '2015-11-13 10:10:55')
 
     def test_int_to_ip(self):
         self.assertEqual(cdr.int_to_ip("51388076"), '172.30.16.3')
