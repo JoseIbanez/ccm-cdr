@@ -7,10 +7,14 @@ import time;
 import struct;
 import socket;
 
+#Python3.x compatibility
+if sys.version_info > (3,):
+    long = int
+
 def time_to_string(time_value):
     """convert Unix epoch time to a human readable string"""
     if not (time_value.isdigit()):
-	return time_value
+        return time_value
 
     return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(float(time_value)))
 
@@ -33,19 +37,20 @@ def int2ip(addr):
 
 
 #####################################################
+def main():
 
-reader = csv.reader(iter(sys.stdin.readline, ''))
+    reader = csv.reader(iter(sys.stdin.readline, ''))
 
-row = 1
-for row in reader:
-  row[4]=time_to_string(row[4])  
+    row = 1
+    for row in reader:
+        row[4]=time_to_string(row[4])
 
-  row[ 7]=int2ip(row[ 7]) ## Signaling Orig
-  row[13]=int2ip(row[13]) ## Media Orig
-  row[28]=int2ip(row[28]) ## Signaling Dest
-  row[35]=int2ip(row[35]) ## Media Dest
+        row[ 7]=int2ip(row[ 7]) ## Signaling Orig
+        row[13]=int2ip(row[13]) ## Media Orig
+        row[28]=int2ip(row[28]) ## Signaling Dest
+        row[35]=int2ip(row[35]) ## Media Dest
 
+        print(','.join([row[4],row[7],row[28],row[13],row[35],row[8],row[29],row[11],row[33],row[55],row[65],row[2],row[56],row[57]]))
 
-  print ','.join([row[4],row[7],row[28],row[13],row[35],row[8],row[29],row[11],row[33],row[55],row[65],row[2],row[56],row[57]])  
-  
-  
+if __name__ == '__main__':
+    main()          

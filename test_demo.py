@@ -3,7 +3,7 @@ if sys.version_info < (2, 7):
     import unittest2 as unittest
 else:
     import unittest
-    
+
 import cdr
 
 class TestCdrMethods(unittest.TestCase):
@@ -15,8 +15,8 @@ class TestCdrMethods(unittest.TestCase):
     def test_time_to_string(self):
         self.assertEqual(cdr.time_to_string("1447409455"), '2015-11-13 10:10:55')
 
-    def test_int_to_ip(self):
-        self.assertEqual(cdr.int_to_ip("51388076"), '172.30.16.3')
+    def test_int2ip(self):
+        self.assertEqual(cdr.int2ip("51388076"), '172.30.16.3')
 
     def test_isupper(self):
         self.assertTrue('FOO'.isupper(),"oooh :(")
