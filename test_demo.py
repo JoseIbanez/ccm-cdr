@@ -1,10 +1,10 @@
 import sys
+import cdr
+
 if sys.version_info < (2, 7):
     import unittest2 as unittest
 else:
     import unittest
-
-import cdr
 
 class TestCdrMethods(unittest.TestCase):
 
@@ -19,7 +19,7 @@ class TestCdrMethods(unittest.TestCase):
         self.assertEqual(cdr.int2ip("51388076"), '172.30.16.3')
 
     def test_isupper(self):
-        self.assertTrue('FOO'.isupper(),"oooh :(")
+        self.assertTrue('FOO'.isupper(), "oooh :(")
         self.assertFalse('Foo'.isupper())
 
     def test_split(self):
