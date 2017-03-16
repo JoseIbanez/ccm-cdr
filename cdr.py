@@ -1,4 +1,5 @@
 #!/usr/bin/python
+""" Conver Cisco CDR to simple readable format"""
 
 import sys
 import csv
@@ -38,6 +39,7 @@ def int2ip(addr):
 
 #####################################################
 def main():
+    """ Convert Cisco CDR to readable format """
 
     reader = csv.reader(iter(sys.stdin.readline, ''))
 
@@ -50,7 +52,9 @@ def main():
         row[28] = int2ip(row[28]) ## Signaling Dest
         row[35] = int2ip(row[35]) ## Media Dest
 
-        print(','.join([row[4],row[7],row[28],row[13],row[35],row[8],row[29],row[11],row[33],row[55],row[65],row[2],row[56],row[57]]))
+        print(','.join([row[4], row[7], row[28], row[13], row[35], row[8],
+                        row[29], row[11], row[33], row[55], row[65], row[2],
+                        row[56], row[57]]))
 
 if __name__ == '__main__':
     main()
