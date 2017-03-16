@@ -1,11 +1,11 @@
 #!/usr/bin/python
 
-import sys;
-import csv;
-import datetime;
-import time;
-import struct;
-import socket;
+import sys
+import csv
+import datetime
+import time
+import struct
+import socket
 
 #Python3.x compatibility
 if sys.version_info > (3,):
@@ -13,27 +13,27 @@ if sys.version_info > (3,):
 
 def time_to_string(time_value):
     """convert Unix epoch time to a human readable string"""
-    if not (time_value.isdigit()):
+    if not time_value.isdigit():
         return time_value
 
-    return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(float(time_value)))
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(float(time_value)))
 
 
 def int2ip(addr):
     """ convert a 32-bit signed integer to an IP address"""
 
     try:
-       addr=(long(addr) & 0xffffffff)
+        addr = (long(addr) & 0xffffffff)
     except ValueError:
-       return addr
+        return addr
 
     try:
-       return socket.inet_ntoa(struct.pack("<I",int(addr)))
+        return socket.inet_ntoa(struct.pack("<I", int(addr)))
     except struct.error:
-       print addr
-       return "0.0.0.0"
+        print addr
+        return "0.0.0.0"
     except ValueError:
-       return "0.0.0.0"
+        return "0.0.0.0"
 
 
 #####################################################
@@ -43,14 +43,14 @@ def main():
 
     row = 1
     for row in reader:
-        row[4]=time_to_string(row[4])
+        row[4] = time_to_string(row[4])
 
-        row[ 7]=int2ip(row[ 7]) ## Signaling Orig
-        row[13]=int2ip(row[13]) ## Media Orig
-        row[28]=int2ip(row[28]) ## Signaling Dest
-        row[35]=int2ip(row[35]) ## Media Dest
+        row[7] = int2ip(row[7]) ## Signaling Orig
+        row[13] = int2ip(row[13]) ## Media Orig
+        row[28] = int2ip(row[28]) ## Signaling Dest
+        row[35] = int2ip(row[35]) ## Media Dest
 
         print(','.join([row[4],row[7],row[28],row[13],row[35],row[8],row[29],row[11],row[33],row[55],row[65],row[2],row[56],row[57]]))
 
 if __name__ == '__main__':
-    main()          
+    main()
